@@ -1,0 +1,4 @@
+import { ArrowUpRight } from 'lucide-react';
+import { ButtonLink, Container, PageHero } from '@/components/ui';
+export const metadata = { title: 'Marketing' };
+export default function MarketingPage() { return <><PageHero eyebrow="Our capability" title="Marketing with meaning" intro="We help health and social impact organizations communicate clearly, respectfully and in ways that move people to action." /><section className="section"><Container className="center-narrow"><h2>Stories that respect the people behind the work.</h2><p>Our communications approach combines strategic thinking, community insight and creative storytelling. We make complex health issues easier to understand without losing their nuance.</p><ButtonLink href="/contact-us">Discuss marketing support <ArrowUpRight size={17} /></ButtonLink></Container></section></>; }

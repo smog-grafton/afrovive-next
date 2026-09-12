@@ -1,0 +1,4 @@
+import { ArrowUpRight } from 'lucide-react';
+import { ButtonLink, Container, PageHero } from '@/components/ui';
+export const metadata = { title: 'Strategy' };
+export default function StrategyPage() { return <><PageHero eyebrow="Our capability" title="Strategy grounded in reality" intro="We support organizations to move from ambition to an actionable, measurable plan." /><section className="section"><Container className="center-narrow"><h2>Good strategy begins with listening.</h2><p>We facilitate practical planning that connects evidence, lived experience, organizational capability and the outcomes communities care about. Together we build a path that teams can actually deliver.</p><ButtonLink href="/contact-us">Talk strategy with us <ArrowUpRight size={17} /></ButtonLink></Container></section></>; }
