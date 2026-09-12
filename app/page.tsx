@@ -1,24 +1,15 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowUpRight, HeartPulse, Lightbulb, Leaf, Users } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import { ButtonLink, Container, SectionHeading } from '@/components/ui';
 import { ContactForm } from '@/components/contact-form';
-import { projects, programs, team } from '@/lib/content';
+import { projects, programs } from '@/lib/content';
+import { HeroSlider } from '@/components/hero-slider';
 
 export default function HomePage() {
   return (
     <>
-      <section className="hero">
-        <Image className="hero-image" src="/images/afrovive/hero/hero1.jpg" alt="Young African people taking part in a health learning session" fill priority sizes="100vw" />
-        <div className="hero-scrim" />
-        <Container className="hero-content">
-          <p className="eyebrow eyebrow-light">Welcome to the home page of</p>
-          <h1>AfroVive Health Foundation <span>(AHF)</span></h1>
-          <p className="hero-copy">A dynamic organization dedicated to advancing health equity, youth empowerment, and climate justice. Guided by the principle <strong>“Nothing for Us Without Us,”</strong> we prioritize youth-led solutions to address Africa&apos;s most pressing challenges.</p>
-          <ButtonLink href="/about-us" variant="yellow">Get started now <ArrowUpRight size={17} /></ButtonLink>
-        </Container>
-        <div className="hero-stamp"><strong>12</strong><span>Years of<br />experience</span></div>
-      </section>
+      <HeroSlider />
 
       <section className="section section-about">
         <Container className="split split-about">
@@ -33,7 +24,7 @@ export default function HomePage() {
 
       <section className="section projects-section"><Container><SectionHeading eyebrow="Recent projects" title="Knowledge that moves communities forward" intro="Our projects connect learning, evidence and action to create healthier futures shaped by the people they serve." /><div className="project-grid">{projects.map((project) => <Link className="project-card" href={`/projects/${project.slug}`} key={project.slug}><div className="project-image"><Image src={project.image} alt={project.imageAlt} fill sizes="(max-width: 700px) 100vw, 33vw" /></div><div className="project-body"><p className="card-kicker">{project.category}</p><h3>{project.title}</h3><span className="circle-arrow"><ArrowUpRight size={19} /></span></div></Link>)}</div><div className="center-action"><ButtonLink href="/projects" variant="outline">View all projects <ArrowUpRight size={17} /></ButtonLink></div></Container></section>
 
-      <section className="section director-section"><Container className="split split-director"><div><p className="eyebrow eyebrow-light">Meet the team</p><h2>People who turn conviction into action.</h2><p>Our team brings together public health practitioners, researchers, community advocates and young leaders committed to practical, locally owned change.</p><ButtonLink href="/management" variant="yellow">Meet our management <ArrowUpRight size={17} /></ButtonLink></div><div className="director-card"><Image src="/images/afrovive/team/dr-ben-director.webp" alt="Dr Ben Kibirige, Founder and Executive Director" width={651} height={642} /><div><h3>Dr Ben Kibirige</h3><p>Founder &amp; Executive Director</p></div></div></Container></section>
+      <section className="section director-section"><Container className="split split-director"><div><p className="eyebrow eyebrow-light">Meet our team</p><h2>People who turn conviction into action.</h2><p>Our team brings together public health practitioners, researchers, community advocates and young leaders committed to practical, locally owned change.</p><ButtonLink href="/management" variant="yellow">Meet our team <ArrowUpRight size={17} /></ButtonLink></div><div className="director-card"><Image src="/images/afrovive/team/dr-ben-director.webp" alt="Dr Ben Kibirige, Founder and Executive Director" width={651} height={642} /><div><h3>Dr Ben Kibirige</h3><p>Founder &amp; Executive Director</p></div></div></Container></section>
 
       <section className="section cta-band"><Container className="cta-inner"><div><p className="eyebrow">Let&apos;s work together</p><h2>Healthier futures are built together.</h2></div><ButtonLink href="/contact-us" variant="dark">Contact us now <ArrowUpRight size={17} /></ButtonLink></Container></section>
 
