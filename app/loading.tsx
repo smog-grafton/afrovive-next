@@ -1,0 +1,1 @@
+export default function Loading() { return <div className="page-loading" aria-label="Loading AfroVive content"><div className="skeleton skeleton-wide" /><div className="skeleton skeleton-title" /><div className="skeleton skeleton-copy" /><div className="skeleton skeleton-copy short" /></div>; }

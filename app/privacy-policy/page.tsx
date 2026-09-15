@@ -1,3 +1,9 @@
 import { Container, PageHero } from '@/components/ui';
-export const metadata = { title: 'Privacy policy' };
-export default function PrivacyPage() { return <><PageHero eyebrow="Legal" title="Privacy policy" intro="How AfroVive Health Foundation handles information shared through this website." /><section className="section"><Container className="legal-body"><p className="eyebrow">Last updated September 2026</p><h2>Our approach to privacy</h2><p>We respect your privacy and only use information you share with us to respond to enquiries, provide requested services and improve our work.</p><h2>Information you share</h2><p>When you use a contact or appointment form, we may collect your name, email address, phone number and message. We do not sell this information or use it for unrelated marketing.</p><h2>Your choices</h2><p>You can ask us to update or remove your information by contacting info@afrovivehealth.org. We will take reasonable steps to protect the information entrusted to us.</p></Container></section></>; }
+import { getPage } from '@/lib/api';
+
+export const dynamic = 'force-dynamic';
+
+export default async function PrivacyPage() {
+  const page = await getPage('privacy-policy');
+  return <><PageHero eyebrow={page.hero.eyebrow || 'Legal'} title={page.hero.title} intro={page.hero.intro || page.excerpt || ''} /><section className="section"><Container className="legal-body"><p className="eyebrow">Last updated September 2026</p>{(page.body || page.excerpt || '').split(/\n+/).filter(Boolean).map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</Container></section></>;
+}

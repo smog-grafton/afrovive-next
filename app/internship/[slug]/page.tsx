@@ -1,0 +1,5 @@
+import { notFound } from 'next/navigation';
+import { ApiError, getInternship } from '@/lib/api';
+import { ButtonLink, Container, PageHero } from '@/components/ui';
+export const dynamic = 'force-dynamic';
+export default async function InternshipOpportunityPage({ params }: { params: { slug: string } }) { const opportunity = await getInternship(params.slug).catch(error => { if (error instanceof ApiError && error.status === 404) notFound(); throw error; }); return <><PageHero eyebrow="Internship opportunity" title={opportunity.title} intro={opportunity.summary} /><section className="section"><Container className="center-narrow"><p className="eyebrow">{opportunity.location || opportunity.programme || 'AfroVive internship'}</p><h2>Opportunity details</h2><p>{opportunity.description}</p>{opportunity.requirements.length > 0 && <><h3>Requirements</h3><ul className="check-list">{opportunity.requirements.map(item => <li key={item}>{item}</li>)}</ul></>}<ButtonLink href={opportunity.application_url || '/contact-us'}>{opportunity.application_url ? 'Apply now' : 'Ask about this opportunity'}</ButtonLink></Container></section></>; }
