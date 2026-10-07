@@ -1,5 +1,5 @@
 import 'server-only';
-import type { ApiList, Career, Faq, HomeData, Opportunity, PageData, Partner, Post, Program, Project, SiteData, SupportMethod, TeamMember } from './types';
+import type { ApiList, Career, Faq, Gallery, GalleryCategory, HomeData, Opportunity, PageData, Partner, Post, Program, Project, SiteData, SupportMethod, TeamMember, Video, VideoCategory } from './types';
 
 export class ApiError extends Error { constructor(public readonly status: number, message: string) { super(message); this.name = 'ApiError'; } }
 
@@ -24,6 +24,12 @@ export const getProjects = () => apiGet<ApiList<Project>>('projects', { revalida
 export const getProject = (slug: string) => apiGet<Project>(`projects/${slug}`, { revalidate: 60, tags: [`project-${slug}`] });
 export const getPosts = () => apiGet<ApiList<Post>>('posts', { revalidate: 60, tags: ['posts'] });
 export const getPost = (slug: string) => apiGet<Post>(`posts/${slug}`, { revalidate: 60, tags: [`post-${slug}`] });
+export const getVideos = (params = '') => apiGet<ApiList<Video>>(`videos${params}`, { revalidate: 60, tags: ['videos'] });
+export const getVideo = (slug: string) => apiGet<Video>(`videos/${slug}`, { revalidate: 60, tags: [`video-${slug}`] });
+export const getVideoCategories = () => apiGet<VideoCategory[]>('video-categories', { revalidate: 300, tags: ['video-categories'] });
+export const getGalleries = (params = '') => apiGet<ApiList<Gallery>>(`galleries${params}`, { revalidate: 60, tags: ['galleries'] });
+export const getGallery = (slug: string) => apiGet<Gallery>(`galleries/${slug}`, { revalidate: 60, tags: [`gallery-${slug}`] });
+export const getGalleryCategories = () => apiGet<GalleryCategory[]>('gallery-categories', { revalidate: 300, tags: ['gallery-categories'] });
 export const getTeam = () => apiGet<TeamMember[]>('team', { revalidate: 300, tags: ['team'] });
 export const getTeamMember = (slug: string) => apiGet<TeamMember>(`team/${slug}`, { revalidate: 300, tags: [`team-${slug}`] });
 export const getPartners = () => apiGet<Partner[]>('partners', { revalidate: 300, tags: ['partners'] });
